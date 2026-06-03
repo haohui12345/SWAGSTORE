@@ -181,8 +181,6 @@ jobs:
       #       npm ci --omit=dev
       #       pm2 restart swagstore
 
-      - name: ✅ Deploy step placeholder
+      - name: Trigger Render Deploy
         run: |
-          echo "Artifact ready at dist/swagstore.zip"
-          echo "Uncomment the deploy option that matches your host."
-          echo "Commit SHA: ${{ github.sha }}"
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK }}"
